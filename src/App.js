@@ -1,23 +1,20 @@
 
 import './App.css';
-let name= "Aayu";
+import Navbar from './components/Navbar';
+import TextForm from './components/TextForm';
+
 
 function App() {
-  return (<>
+  return (
     
     <>
-    <nav>
-      <li>Home</li>
-      <li>About</li> 
-      <li>Contact</li>     
-       </nav></>
-       <div classname="container">
-        <h1> Hello {name} </h1>
-        <p> Bonjoure ! How are you guys?? Welcome to class with Aayu.
-          Hope you enjoy the rest of the session. 
-          </p>
+   
+    <Navbar title ="Textutils" />
+    <div className= "container">
+    <TextForm heading ="Enter the text to analyze below"/>
+    </div>
 
-       </div>
+       
     </>
   );
 }
