@@ -13,17 +13,48 @@ setText(newText)
     setText(event.target.value)
  }
 
+   const handleLoClick=() => {
+        console.log("Lowercase was clicked" + text);
+        let newText = text.toLowerCase();
+        setText(newText);
+    }
 
 
-    const[text,setText]= useState('Enter text here');
+    const handleCapClick = ()=>{
+        console.log("Capitalize first word"+ text); 
+        let newText = text.slice(0,1).toUpperCase()+ text.slice(1,text.length);
+        setText(newText)
+        
+         }
+
+
+
+
+    const[text,setText]= useState('');
   return (
-    <div>
-     <h1>{props.heading}</h1>   
+  <>
+    <div className="container">
+     <h2>{props.heading}</h2>   
 <div className="mb-3">
   <textarea className="form-control" value={text} onChange = {handleOnchange} id="myBox" rows="8"></textarea>
 </div>
-    <button className="btn btn-primary" onClick ={handleUpClick}>convert to Uppercase</button>  
-    </div>
+    <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
+    <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Lowercase</button> 
+    <button className="btn btn-success mx-1" onClick ={handleCapClick}>Capitalize first letter </button>  
+          
+ </div>
+<div className ="container my-2">
+
+    <h4> YOUR TEXT SUMMARY</h4>
+    <p>{text.split(" ").length } words and {text.length} characters</p>
+    <p>{0.008 * text.split(" ").length} Minutes required to read</p>
+    <h4> PREVIEW </h4>
+    <p>{text}</p>
+
+</div>
+
+</>
+
   )
 } 
 

@@ -11,7 +11,7 @@ function App() {
    
     <Navbar title ="Textutils" />
     <div className= "container">
-    <TextForm heading ="Enter the text to analyze below"/>
+    <TextForm heading ="ENTER THE TEXT TO ANALYZE BELOW"/>
     </div>
 
        
