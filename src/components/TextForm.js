@@ -21,11 +21,20 @@ setText(newText)
 
 
     const handleCapClick = ()=>{
-        console.log("Capitalize first word"+ text); 
+        console.log("Capitalize First Word"+ text); 
         let newText = text.slice(0,1).toUpperCase()+ text.slice(1,text.length);
         setText(newText)
         
          }
+
+         const handleCopy = ()=>{
+            console.log("Copy the Text"); 
+             var text = document.getElementById("myBox");
+            text.select();
+            text.setSelectionRange(0,9999);
+            navigator.clipboard.writeText(text.value);
+             }
+
 
 
 
@@ -40,7 +49,8 @@ setText(newText)
 </div>
     <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
     <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Lowercase</button> 
-    <button className="btn btn-success mx-1" onClick ={handleCapClick}>Capitalize first letter </button>  
+    <button className="btn btn-success mx-1" onClick ={handleCapClick}>Capitalize first letter </button> 
+    <button className="btn btn-success mx-1" onClick ={handleCopy}>Copy Text </button>   
           
  </div>
 <div className ="container my-2">
