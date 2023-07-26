@@ -13,6 +13,11 @@ setText(newText)
     setText(event.target.value)
  }
 
+ const handleClearClick = (event) =>{
+    let newText=" ";
+    setText(newText)
+ }
+
    const handleLoClick=() => {
         console.log("Lowercase was clicked" + text);
         let newText = text.toLowerCase();
@@ -35,23 +40,19 @@ setText(newText)
             navigator.clipboard.writeText(text.value);
              }
 
-
-
-
-
-    const[text,setText]= useState('');
+             const[text,setText]= useState('');
   return (
   <>
     <div className="container">
      <h2>{props.heading}</h2>   
-<div className="mb-3">
+<div className="mb-3 ">
   <textarea className="form-control" value={text} onChange = {handleOnchange} id="myBox" rows="8"></textarea>
 </div>
-    <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
-    <button className="btn btn-success mx-1" onClick ={handleUpClick}>Convert to Lowercase</button> 
-    <button className="btn btn-success mx-1" onClick ={handleCapClick}>Capitalize first letter </button> 
-    <button className="btn btn-success mx-1" onClick ={handleCopy}>Copy Text </button>   
-          
+    <button className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
+    <button className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Lowercase</button> 
+    <button className="btn btn-success mx-1 my-1" onClick ={handleCapClick}>Capitalize first letter </button> 
+    <button className="btn btn-success mx-1 my-1" onClick ={handleCopy}>Copy Text </button>   
+    <button className="btn btn-success mx-1 my-1" onClick ={handleClearClick}>Clear Text </button>      
  </div>
 <div className ="container my-2">
 
