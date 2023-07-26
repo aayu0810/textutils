@@ -75,7 +75,7 @@ else {
             </div>
             </div>
             <div className= "container my-3">
-            <button onClick={toggleStyle} type ="button" className ="btn btn-primary">Enable dark mode</button>
+            <button onClick={toggleStyle} type ="button" className ="btn btn-primary" >Enable dark mode</button>
             </div>
     </div>
   );
