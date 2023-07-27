@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
 
+
  const handleUpClick = ()=>{
 console.log("Uppercase was clicked"+ text); 
 let newText = text.toUpperCase();
@@ -56,23 +57,23 @@ props.showAlert("Converted to Uppercase!","success");
   return(
   <>
     <div className="container" style = {{color: props.mode === 'dark'?'white':'#0e2f1f'}}>
-     <h2>{props.heading}</h2>   
+     <h2 className = 'mb-4'>{props.heading}</h2>   
 <div className="mb-3 ">
-  <textarea className="form-control" value={text} onChange = {handleOnchange} style={{backgroundColor : props.mode ==='dark'?'grey':'white' , color : props.mode==='dark'?'white':'#0e2f1f'}}id="myBox" rows="8"></textarea>
+  <textarea className="form-control" value={text} onChange = {handleOnchange} style={{backgroundColor : props.mode ==='dark'?'#0f4208':'white' , color : props.mode==='dark'?'white':'#0e2f1f'}}id="myBox" rows="8"></textarea>
 </div>
-    <button className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
-    <button className="btn btn-success mx-1 my-1" onClick ={handleLoClick}>Convert to Lowercase</button> 
-    <button className="btn btn-success mx-1 my-1" onClick ={handleCapClick}>Capitalize first letter </button> 
-    <button className="btn btn-success mx-1 my-1" onClick ={handleCopy}>Copy Text </button>   
-    <button className="btn btn-success mx-1 my-1" onClick ={handleClearClick}>Clear Text </button>      
+    <button disabled ={text.length===0} className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
+    <button disabled ={text.length===0} className="btn btn-success mx-1 my-1" onClick ={handleLoClick}>Convert to Lowercase</button> 
+    <button disabled ={text.length===0} className="btn btn-success mx-1 my-1" onClick ={handleCapClick}>Capitalize first letter </button> 
+    <button disabled ={text.length===0} className="btn btn-success mx-1 my-1" onClick ={handleCopy}>Copy Text </button>   
+    <button disabled ={text.length===0} className="btn btn-success mx-1 my-1" onClick ={handleClearClick}>Clear Text </button>      
  </div>
 <div className ="container my-2" style = {{color: props.mode === 'dark'?'white':'#0e2f1f'}}>
 
     <h4> YOUR TEXT SUMMARY</h4>
-    <p>{text.split(" ").length } words and {text.length} characters</p>
-    <p>{0.008 * text.split(" ").length} Minutes required to read</p>
+    <p>{text.split(" ").filter((element)=>{return element.length!==0}).length } words and {text.length} characters</p>
+    <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes required to read</p>
     <h4> PREVIEW </h4>
-    <p>{text.length>0?text: "Enter something in the textbox above to preview here"}</p>
+    <p>{text.length>0?text: "Nothing to preview"}</p>
 
 </div>
 
