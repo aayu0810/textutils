@@ -6,30 +6,40 @@ export default function TextForm(props) {
 console.log("Uppercase was clicked"+ text); 
 let newText = text.toUpperCase();
 setText(newText)
-
+props.showAlert("Converted to Uppercase!","success");
  }
+ 
  const handleOnchange = (event) =>{
     console.log("On change");
     setText(event.target.value)
+
  }
 
  const handleClearClick = (event) =>{
     let newText=" ";
     setText(newText)
- }
+    props.showAlert("Text has been cleared!","success");
+    
+  }
+
 
    const handleLoClick=() => {
         console.log("Lowercase was clicked" + text);
         let newText = text.toLowerCase();
-        setText(newText);
-    }
+        setText(newText)
+        props.showAlert("Converted to Lowercase!","success");
+       
+      }
+
+    
 
 
     const handleCapClick = ()=>{
         console.log("Capitalize First Word"+ text); 
         let newText = text.slice(0,1).toUpperCase()+ text.slice(1,text.length);
-        setText(newText)
-        
+        setText(newText);
+        props.showAlert("First letter has been Capitalized!","success");
+  
          }
 
          const handleCopy = ()=>{
@@ -38,10 +48,12 @@ setText(newText)
             text.select();
             text.setSelectionRange(0,9999);
             navigator.clipboard.writeText(text.value);
+            props.showAlert("Text has been copied!","success");
              }
-
+            
+             
              const[text,setText]= useState('');
-  return (
+  return(
   <>
     <div className="container" style = {{color: props.mode === 'dark'?'white':'#0e2f1f'}}>
      <h2>{props.heading}</h2>   
@@ -49,7 +61,7 @@ setText(newText)
   <textarea className="form-control" value={text} onChange = {handleOnchange} style={{backgroundColor : props.mode ==='dark'?'grey':'white' , color : props.mode==='dark'?'white':'#0e2f1f'}}id="myBox" rows="8"></textarea>
 </div>
     <button className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Uppercase</button>  
-    <button className="btn btn-success mx-1 my-1" onClick ={handleUpClick}>Convert to Lowercase</button> 
+    <button className="btn btn-success mx-1 my-1" onClick ={handleLoClick}>Convert to Lowercase</button> 
     <button className="btn btn-success mx-1 my-1" onClick ={handleCapClick}>Capitalize first letter </button> 
     <button className="btn btn-success mx-1 my-1" onClick ={handleCopy}>Copy Text </button>   
     <button className="btn btn-success mx-1 my-1" onClick ={handleClearClick}>Clear Text </button>      
@@ -67,8 +79,7 @@ setText(newText)
 </>
 
   )
-} 
+  
 
 
-
-   
+  }
